@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPlatform - Learn Anything, Anywhere</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">EduPlatform</div>
+            
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('dashboard')" class="nav-link active">Dashboard</a></li>
+                <li><a href="#" onclick="showPage('courses')" class="nav-link">Courses</a></li>
+                <li><a href="#" onclick="showPage('progress')" class="nav-link">Progress</a></li>
+            </ul>
+            
+            <div class="user-profile">
+                <div class="profile-img">JD</div>
+                <span>John Doe</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <div class="dashboard-header">
+                <h1>Welcome back, John! 👋</h1>
+                <p>Continue your learning journey with these amazing courses.</p>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Courses Enrolled</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Courses Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Hours Learned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">Average Progress</div>
+                </div>
+            </div>
+
+            <h2>Continue Learning</h2>
+            <div class="course-grid">
+                <div class="course-card" onclick="showPage('course-detail', 1)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development Fundamentals</h3>
+                        <p class="course-instructor">by Sarah Johnson</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>75% Complete</span>
+                            <span>12 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" onclick="showPage('course-detail', 2)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">JavaScript Advanced Concepts</h3>
+                        <p class="course-instructor">by Mike Chen</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>45% Complete</span>
+                            <span>18 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" onclick="showPage('course-detail', 3)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">React for Beginners</h3>
+                        <p class="course-instructor">by Emma Davis</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>90% Complete</span>
+                            <span>15 lessons</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Page -->
+        <div id="courses" class="page">
+            <h1>All Courses</h1>
+            <input type="text" class="search-bar" placeholder="Search courses..." oninput="searchCourses(this.value)">
+            
+            <div class="course-grid" id="all-courses">
+                <div class="course-card" data-title="web development fundamentals" onclick="showPage('course-detail', 1)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development Fundamentals</h3>
+                        <p class="course-instructor">by Sarah Johnson</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>75% Complete</span>
+                            <span>12 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-title="javascript advanced concepts" onclick="showPage('course-detail', 2)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">JavaScript Advanced Concepts</h3>
+                        <p class="course-instructor">by Mike Chen</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>45% Complete</span>
+                            <span>18 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-title="react for beginners" onclick="showPage('course-detail', 3)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">React for Beginners</h3>
+                        <p class="course-instructor">by Emma Davis</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>90% Complete</span>
+                            <span>15 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-title="python programming basics" onclick="showPage('course-detail', 4)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Python Programming Basics</h3>
+                        <p class="course-instructor">by Alex Rodriguez</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Not Started</span>
+                            <span>20 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-title="ui ux design principles" onclick="showPage('course-detail', 5)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">UI/UX Design Principles</h3>
+                        <p class="course-instructor">by Lisa Wang</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>Completed</span>
+                            <span>14 lessons</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-title="data science fundamentals" onclick="showPage('course-detail', 6)">
+                    <div class="course-thumbnail"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Data Science Fundamentals</h3>
+                        <p class="course-instructor">by Dr. James Smith</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>30% Complete</span>
+                            <span>25 lessons</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Page -->
+        <div id="progress" class="page">
+            <h1>Your Learning Progress</h1>
+            
+            <div class="progress-overview">
+                <div class="progress-card">
+                    <div class="progress-circle">
+                        <div class="progress-text">67%</div>
+                    </div>
+                    <h3>Overall Progress</h3>
+                    <p>You're doing great! Keep up the excellent work.</p>
+                </div>
+                
+                <div class="progress-card">
+                    <h3>This Week</h3>
+                    <div class="stat-value">12.5</div>
+                    <div class="stat-label">Hours Studied</div>
+                    <div class="stat-value" style="font-size: 1.5rem; margin-top: 1rem;">8</div>
+                    <div class="stat-label">Lessons Completed</div>
+                </div>
+                
+                <div class="progress-card">
+                    <h3>Achievements</h3>
+                    <div style="margin-top: 1rem;">
+                        <div style="margin-bottom: 1rem;">🏆 Course Completion Master</div>
+                        <div style="margin-bottom: 1rem;">⚡ Speed Learner</div>
+                        <div style="margin-bottom: 1rem;">📚 Bookworm</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Course Progress Details</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development Fundamentals</h3>
+                        <p class="course-instructor">by Sarah Johnson</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>9/12 lessons completed</span>
+                            <span>Last accessed: Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3 class="course-title">JavaScript Advanced Concepts</h3>
+                        <p class="course-instructor">by Mike Chen</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>8/18 lessons completed</span>
+                            <span>Last accessed: Yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3 class="course-title">React for Beginners</h3>
+                        <p class="course-instructor">by Emma Davis</p>
+                        <div class="course-progress">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="course-meta">
+                            <span>14/15 lessons completed</span>
+                            <span>Last accessed: 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Detail Page -->
+        <div id="course-detail" class="page">
+            <div class="course-layout">
+                <div>
+                    <div class="video-container">
+                        <h2 id="lesson-title">Introduction to HTML</h2>
+                        <div class="video-player">
+                            <video controls id="lesson-video">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn" onclick="markLessonComplete()">Mark as Complete</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lesson-sidebar">
+                    <h3>Course Content</h3>
+                    <ul class="lesson-list" id="lesson-list">
+                        <li class="lesson-item active" onclick="playLesson(1)">
+                            <div class="lesson-number">1</div>
+                            <div>
+                                <div>Introduction to HTML</div>
+                                <small>12:34</small>
+                            </div>
+                        </li>
+                        <li class="lesson-item" onclick="playLesson(2)">
+                            <div class="lesson-number">2</div>
+                            <div>
+                                <div>HTML Structure and Elements</div>
+                                <small>18:45</small>
+                            </div>
+                        </li>
+                        <li class="lesson-item" onclick="playLesson(3)">
+                            <div class="lesson-number">3</div>
+                            <div>
+                                <div>CSS Basics</div>
+                                <small>22:17</small>
+                            </div>
+                        </li>
+                        <li class="lesson-item" onclick="playLesson(4)">
+                            <div class="lesson-number">4</div>
+                            <div>
+                                <div>CSS Layout Techniques</div>
+                                <small>15:32</small>
+                            </div>
+                        </li>
+                        <li class="lesson-item" onclick="playLesson(5)">
+                            <div class="lesson-number">5</div>
+                            <div>
+                                <div>JavaScript Introduction</div>
+                                <small>20:08</small>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4>Course Progress</h4>
+                        <div class="course-progress" style="margin-top: 1rem;">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">75% Complete (3/4 lessons)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+   
+</body>
+</html>
